@@ -22,7 +22,7 @@
 }
 .new-random-list-wrapper p {
     margin: 20px 0px;
-    display: inline-block;
+    display: block;
 }
 .ramdom-list-wrapper li {
     margin: 10px;
@@ -34,10 +34,10 @@
     height: auto;
 }
 .new-random-list-wrapper button {
-    display: inline-block;
+    display: block;
 }
 /* Selected Book */
 .selected-book-wrapper {
-    width: 400px;
-    height: 500px;
+    width: 60%;
+    height: 70%;
 }
