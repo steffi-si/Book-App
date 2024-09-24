@@ -7,7 +7,7 @@ export default function RandomList() {
     const [isLoading, setIsLoading] = useState(true);
     const [selectedBook, setSelectedBook] = useState(null);
 
-    const fetchBooks = () => {
+    function fetchBooks () {
         setIsLoading(true);
         const randomWord = commonWords[Math.floor(Math.random() * commonWords.length)];
         const url = `https://openlibrary.org/search.json?q=${randomWord}&limit=20`;
@@ -58,9 +58,23 @@ export default function RandomList() {
                         src={`https://covers.openlibrary.org/b/id/${selectedBook.cover_i}-L.jpg`} 
                         alt={selectedBook.title} 
                     />
-                    <p>Author: {selectedBook.author_name ? selectedBook.author_name.join(", ") : "Unknown"}</p>
-                    <p>First Published: {selectedBook.first_publish_year || "Unknown"}</p>
-                    <p>ISBN: {selectedBook.isbn ? selectedBook.isbn[0] : "Unknown"}</p>
+                    <p><strong>Author(s): </strong>{selectedBook.author_name ? selectedBook.author_name.join(", ") : "Unknown"}</p>
+                    <p><strong>First Published: </strong>{selectedBook.first_publish_year || "Unknown"}</p>
+                    <p><strong>ISBN: </strong>{selectedBook.isbn ? selectedBook.isbn[0] : "Unknown"}</p>
+                    <p><strong>Publisher: </strong>{selectedBook.publisher ? selectedBook.publisher[0] : "Unknown"}</p>
+                    <p><strong>Number of pages: </strong>{selectedBook.number_of_pages || "Unknown"}</p>
+                    <p><strong>Subjects: </strong>{selectedBook.subject ? selectedBook.subject.slice(0 ,5).join(", ") : "Unknown"}</p>
+                    <p><strong>Average Rating: </strong>{selectedBook.ratings_average.toFixed(1) || "-"} / 5</p>
+                    {
+                        selectedBook.ebook_access === "borrowable" && (
+                            <p><strong>Ebook available: </strong>Yes (Borrowable)</p>
+                        )
+                    }
+                    {
+                        selectedBook.ebook_count_i > 0 && (
+                            <p><strong>Ebook count: </strong>{selectedBook.ebook_count_i}</p>
+                        )
+                    }
                     <button onClick={closeDetails}>Close</button>
                 </div>
             )}
