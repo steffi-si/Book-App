@@ -5,6 +5,13 @@
     padding: 0px;
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
+body {
+    background-image: url("/src/images/background5.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
 /* Home - random book list */
 .random-list-wrapper { 
     width: 90%;
@@ -25,13 +32,18 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    border: 1px solid #ddd;
+    border: 1px solid grey;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(70, 70, 70, 0.259);
+    background-image: url("/src/images/paper.jpg");
 }
 .random-list-wrapper li:hover {
     transform: scale(1.05);
+}
+.random-list-wrapper p {
+    font-size: 20px;
+    font-weight: 600;
 }
 .random-list-wrapper img {
     width: 150px;
@@ -71,6 +83,7 @@
 .selected-book-wrapper h2 {
     text-align: center;
     margin-bottom: 15px;
+    margin-top: 40px;
 }
 .selected-book-wrapper p {
     margin-bottom: 10px;
@@ -86,7 +99,49 @@
     display: block;
     margin: 20px auto 0px;
     padding: 10px 20px;
+    position: fixed;
+    top: 0px;
+    right: 18px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 3px;
+}
+/* Modal view */
+.modal-overlay {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+.modal-content {
+    background-color: white;
+    padding: 20px;
     border-radius: 5px;
+    max-width: 90%;
+    max-height: 90%;
+    overflow: auto;
+    position: relative;
+}
+.modal-content img {
+    zoom: 2;
+}
+.modal-content button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
 }
 /* Media Queries - responsive Darstellung */
 @media (min-width: 481px) {
